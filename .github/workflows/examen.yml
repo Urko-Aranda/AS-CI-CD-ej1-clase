@@ -1,1 +1,33 @@
 
+name: examen-workflow
+
+on: 
+  push:
+    branches:
+      - nueva-caracteristica
+
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Descargar el código
+      - name: Descargar el codigo
+        uses: actions/checkout@v4
+
+      # Configurar un entorno Python de versión 3.10
+      - name: Configurar el entorno Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      # Ejecutar Comandos
+      - name: Ejecutar comandos
+        run: |
+          pip install pytest
+          pytest test.py
+
+      # Construir imagen
+      - name: Construir la imagen
+        uses: docker/build-push-action@v6
