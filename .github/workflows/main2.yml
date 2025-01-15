@@ -1,6 +1,10 @@
 name: Code Quality Analysis
 
-on: push
+on: 
+  push:
+    branches:
+      - main
+      - rama1
 
 permissions:
   security-events: write
