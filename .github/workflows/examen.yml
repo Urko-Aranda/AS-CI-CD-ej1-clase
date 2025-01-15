@@ -31,3 +31,8 @@ jobs:
       # Construir imagen
       - name: Construir la imagen
         uses: docker/build-push-action@v6
+        with:
+          context: .  # Directorio donde se encuentra el Dockerfile
+          file: ./Dockerfile  # Ruta al Dockerfile
+          push: false  # No sube la imagen a ningún registro
+          tags: imagen-temporal:latest  # Etiqueta local para la imagen
